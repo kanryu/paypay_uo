@@ -80,5 +80,7 @@ Please raise issues on GitHub. Pull requests always welcome.
 [![Black Duck Security Risk](https://copilot.blackducksoftware.com/github/repos/kanryu/paypay_uo/branches/master/badge-risk.svg)](https://copilot.blackducksoftware.com/github/repos/kanryu/paypay_uo/branches/master)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fpaypay%2Fpaypayopa-sdk-php.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fpaypay%2Fpaypayopa-sdk-php?ref=badge_shield)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=paypay_paypayopa-sdk-php&metric=alert_status)](https://sonarcloud.io/dashboard?id=paypay_paypayopa-sdk-php)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4d981c534bab4f839b5492962f7f0a58)](https://app.codacy.com/gh/kanryu/paypay_uo?utm_source=github.com&utm_medium=referral&utm_content=paypay/paypayopa-sdk-php&utm_campaign=Badge_Grade_Dashboard)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/e06f6ae54e164c92bece3058575af686)](https://app.codacy.com/gh/kanryu/paypay_uo/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 [![BCH compliance](https://bettercodehub.com/edge/badge/kanryu/paypay_uo?branch=master)](https://bettercodehub.com/)
+
+
