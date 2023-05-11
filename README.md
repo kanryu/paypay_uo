@@ -13,18 +13,18 @@ PayPay SDK https://developer.paypay.ne.jp/miniapp/docs/apireference/commonSpecs
 
 Before integrating with the SDK, run through this checklist:
 
-* Understand the payment flow
-* Sign up for a PayPay developer/merchant account
-* Generate the API keys from the Developer Panel. Use the sandbox API keys to test out the integration
+*   Understand the payment flow
+*   Sign up for a PayPay developer/merchant account
+*   Generate the API keys from the Developer Panel. Use the sandbox API keys to test out the integration
 
 ## Features 
 APIs implemented:
 
-- Cashback
-- QR Code
-- Payment
-- User
-- Wallet
+-   Cashback
+-   QR Code
+-   Payment
+-   User
+-   Wallet
 
 
 ## Usage 
