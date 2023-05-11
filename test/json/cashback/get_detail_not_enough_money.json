@@ -1,0 +1,13 @@
+{
+    "resultInfo": {
+        "code": "NOT_ENOUGH_MONEY",
+        "message": "Failed",
+        "codeId": "08100001"
+    },
+    "data": {
+        "cashbackId": "00000000000000009999",
+        "amount": {
+            "amount": 100000
+        }
+    }
+}

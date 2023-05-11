@@ -1,0 +1,25 @@
+name: paypay_uo
+description: paypay_uo (PayPay Unofficial) is a client library for PayPay's Open Payment API (OPA) faithfully ported from paypayopa-sdk-php
+version: 0.1.0
+repository: https://github.com/kanryu/paypay_uo
+
+environment:
+  sdk: '>=2.15.0 <3.0.0'
+
+dependencies:
+  json_annotation: ^4.8.0
+  http: ^0.13.5
+  logging: ^1.1.1
+  dart_jsonwebtoken: ^2.7.1
+  uuid: ^3.0.7
+  crypto: ^3.0.3
+  uri: ^1.0.0
+  freezed: ^2.3.3
+  freezed_annotation: ^2.2.0
+  format: ^1.3.0
+
+dev_dependencies:
+  lints: ^2.0.1
+  test: ^1.24.0
+  build_runner: ^2.3.2
+  json_serializable: ^6.6.1

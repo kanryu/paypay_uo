@@ -1,0 +1,33 @@
+{
+    "resultInfo": {
+        "code": "SUCCESS",
+        "message": "Success",
+        "codeId": "08100001"
+    },
+    "data": {
+        "codeId": "04-K49Uf6dJ1RQ4ObvO",
+        "url": "https://qr-stg.sandbox.paypay.ne.jp/28180104K49Uf6dJ1RQ4ObvO",
+        "expiryDate": 1683656240,
+        "merchantPaymentId": "TESTMERCH_PAY_ID645ae52f1378b",
+        "amount": {
+            "amount": 1,
+            "currency": "JPY"
+        },
+        "orderItems": [
+            {
+                "name": "Cake",
+                "quantity": 1,
+                "unit_price": {
+                    "amount": 20,
+                    "currency": "JPY"
+                }
+            }
+        ],
+        "codeType": "ORDER_QR",
+        "requestedAt": 1683678537,
+        "redirectUrl": "http://foobar.com",
+        "redirectType": "WEB_LINK",
+        "isAuthorization": false,
+        "deeplink": "paypay://payment?link_key=https%3A%2F%2Fqr-stg.sandbox.paypay.ne.jp%2F28180104K49Uf6dJ1RQ4ObvO"
+    }
+}

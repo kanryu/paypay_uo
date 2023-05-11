@@ -1,0 +1,13 @@
+{
+    "resultInfo": {
+        "code": "SUCCESS",
+        "message": "Success",
+        "codeId": "08100001"
+    },
+    "data": {
+        "cashbackId": "00000000000000001111",
+        "amount": {
+            "amount": 1
+        }
+    }
+}
