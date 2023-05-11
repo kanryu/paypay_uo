@@ -7,7 +7,7 @@ import 'package:paypay_uo/src/core/model/cash_back_payload.dart';
 import 'package:paypay_uo/src/core/model/reverse_cash_back_payload.dart';
 import 'package:paypay_uo/src/constants/api_info.dart';
 
-/// CODE API controller
+/// Cashback API controller
 class Cashback extends Controller {
   Cashback({required PayPayClient main}) : super(main: main);
 

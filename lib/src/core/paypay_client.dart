@@ -32,22 +32,22 @@ class PayPayClient {
   /// url set of the APIs
   final ApiUri uri;
 
-  /// CODE API controller
+  /// QR API controller
   late Code? code;
 
-  /// CODE API controller
+  /// Cashback API controller
   late Cashback? cashBack;
 
-  /// CODE API controller
+  /// Payment API controller
   late Payment? payment;
 
   /// User API controller
   late User? user;
 
-  /// CODE API controller
+  /// Wallet API controller
   late Wallet? wallet;
 
-  /// Returns CODE API controller
+  /// Returns QR Code API controller
   Code get codeApi => code != null ? code! : code = Code(main: this);
 
   /// Returns CashBack API controller

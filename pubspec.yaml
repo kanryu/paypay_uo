@@ -4,13 +4,12 @@ version: 0.1.0
 repository: https://github.com/kanryu/paypay_uo
 
 environment:
-  sdk: '>=2.15.0 <3.0.0'
+  sdk: '>=2.15.0 <4.0.0'
 
 dependencies:
   json_annotation: ^4.8.0
   http: ^0.13.5
   logging: ^1.1.1
-  dart_jsonwebtoken: ^2.7.1
   uuid: ^3.0.7
   crypto: ^3.0.3
   uri: ^1.0.0

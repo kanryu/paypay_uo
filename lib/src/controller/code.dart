@@ -6,7 +6,7 @@ import 'package:paypay_uo/src/core/controller.dart';
 import 'package:paypay_uo/src/core/model/create_qr_code_payload.dart';
 import 'package:paypay_uo/src/constants/api_info.dart';
 
-/// CODE API controller
+/// Qr CODE API controller
 class Code extends Controller {
   Code({required PayPayClient main}) : super(main: main);
 
