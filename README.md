@@ -64,6 +64,12 @@ void main() async {
 }
 ```
 
+# License
+Apache License Version 2.0
+
+# Author
+Copyright 2023 KATO Kanryu(k.kanryu@gmail.com)
+
 ## Additional information 
 Please raise issues on GitHub. Pull requests always welcome.
 
