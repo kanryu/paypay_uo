@@ -1,3 +1,4 @@
+// ignore: unnecessary_import
 import 'package:json_annotation/json_annotation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'amount.dart';
