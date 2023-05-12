@@ -33,26 +33,62 @@ mixin _$CreateQrCodePayload {
   /// Please pass the fixed value 'ORDER_QR'
   String get codeType => throw _privateConstructorUsedError;
 
-  /// Request timestamp(Unix epoch but not Unix millisecond epoch)
-  int? get requestedAt => throw _privateConstructorUsedError;
-
-  /// The user agent of the web browser from where transaction is originating
-  List<OrderItem>? get orderItems => throw _privateConstructorUsedError;
-
-  /// This can either be 'WEB_LINK' if the payment is happening on web browser or 'APP_DEEP_LINK' if the payment is happening on your app
-  String? get redirectType => throw _privateConstructorUsedError;
-
-  /// The url of the page/app to open after the payment is complete, this can be a Web URL or a Deep link to your app
-  String? get redirectUrl => throw _privateConstructorUsedError;
-
   /// Description of the Order,
   /// to see the link to check how it will show up
   /// https://www.paypay.ne.jp/opa/doc/jp/v1.0/files/OPA%20PayPay%E3%82%A2%E3%83%97%E3%83%AA%E3%81%A7%E3%81%AE%E8%A1%A8%E7%A4%BA.pdf#page=4
   /// string <= 255 characters
   String? get orderDescription => throw _privateConstructorUsedError;
 
+  /// The user agent of the web browser from where transaction is originating
+  List<OrderItem>? get orderItems => throw _privateConstructorUsedError;
+
+  /// Extra information the merchant wants to add
+  Map<String, dynamic>? get metadata => throw _privateConstructorUsedError;
+
+  /// Store info for the merchant
+  /// string <= 255 characters
+  String? get storeInfo => throw _privateConstructorUsedError;
+
+  /// Id to identify store under merchant
+  /// string <= 255 characters
+  String? get storeId => throw _privateConstructorUsedError;
+
+  /// The product type in PayPay system. Generally, this request parameter is optional.
+  ///
+  /// For some merchants that are restricted to use only certain product types, the product type must be properly set.
+  /// Example: VIRTUAL_BONUS_INVESTMENT, PAY_LATER_REPAYMENT, REAL_INVESTMENT
+  /// string (ProductType) <= 255 characters
+  String? get productType => throw _privateConstructorUsedError;
+
+  /// Id to identify terminal device under store
+  /// string <= 255 characters
+  String? get terminalId => throw _privateConstructorUsedError;
+
+  /// Request timestamp(Unix epoch but not Unix millisecond epoch)
+  int? get requestedAt => throw _privateConstructorUsedError;
+
   /// By default it will be false, please set true if the amount will be captured later (preauth and capture payment)
   bool? get isAuthorization => throw _privateConstructorUsedError;
+
+  /// Epoch timestamp in seconds. The expiry duration must be less than the expiry granted to the merchant.
+  ///
+  /// Note: The expiry, in case of authorization with PAY_LATER_CC,
+  /// is subject to be shortened under special circumstances
+  /// such as user has cancelled PayLater, etc.
+  /// In such cases, PayPay will notify merchant in advance
+  /// of an updated (shortened) the expiry before merchant's authorization period
+  /// expires via webhook notification
+  /// (see the section Transaction Events > AUTHORIZED | Create a payment authorization).
+  /// It is suggested for merchant to implement proper handling
+  /// after consuming such an event to avoid capture failure.
+  int? get authorizationExpiry => throw _privateConstructorUsedError;
+
+  /// The url of the page/app to open after the payment is complete,
+  /// this can be a Web URL or a Deep link to your app
+  String? get redirectUrl => throw _privateConstructorUsedError;
+
+  /// This can either be 'WEB_LINK' if the payment is happening on web browser or 'APP_DEEP_LINK' if the payment is happening on your app
+  String? get redirectType => throw _privateConstructorUsedError;
 
   /// The user agent of the web browser from where transaction is originating
   String? get userAgent => throw _privateConstructorUsedError;
@@ -73,12 +109,18 @@ abstract class $CreateQrCodePayloadCopyWith<$Res> {
       {String merchantPaymentId,
       Amount amount,
       String codeType,
-      int? requestedAt,
-      List<OrderItem>? orderItems,
-      String? redirectType,
-      String? redirectUrl,
       String? orderDescription,
+      List<OrderItem>? orderItems,
+      Map<String, dynamic>? metadata,
+      String? storeInfo,
+      String? storeId,
+      String? productType,
+      String? terminalId,
+      int? requestedAt,
       bool? isAuthorization,
+      int? authorizationExpiry,
+      String? redirectUrl,
+      String? redirectType,
       String? userAgent});
 
   $AmountCopyWith<$Res> get amount;
@@ -100,12 +142,18 @@ class _$CreateQrCodePayloadCopyWithImpl<$Res, $Val extends CreateQrCodePayload>
     Object? merchantPaymentId = null,
     Object? amount = null,
     Object? codeType = null,
-    Object? requestedAt = freezed,
-    Object? orderItems = freezed,
-    Object? redirectType = freezed,
-    Object? redirectUrl = freezed,
     Object? orderDescription = freezed,
+    Object? orderItems = freezed,
+    Object? metadata = freezed,
+    Object? storeInfo = freezed,
+    Object? storeId = freezed,
+    Object? productType = freezed,
+    Object? terminalId = freezed,
+    Object? requestedAt = freezed,
     Object? isAuthorization = freezed,
+    Object? authorizationExpiry = freezed,
+    Object? redirectUrl = freezed,
+    Object? redirectType = freezed,
     Object? userAgent = freezed,
   }) {
     return _then(_value.copyWith(
@@ -121,30 +169,54 @@ class _$CreateQrCodePayloadCopyWithImpl<$Res, $Val extends CreateQrCodePayload>
           ? _value.codeType
           : codeType // ignore: cast_nullable_to_non_nullable
               as String,
-      requestedAt: freezed == requestedAt
-          ? _value.requestedAt
-          : requestedAt // ignore: cast_nullable_to_non_nullable
-              as int?,
-      orderItems: freezed == orderItems
-          ? _value.orderItems
-          : orderItems // ignore: cast_nullable_to_non_nullable
-              as List<OrderItem>?,
-      redirectType: freezed == redirectType
-          ? _value.redirectType
-          : redirectType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      redirectUrl: freezed == redirectUrl
-          ? _value.redirectUrl
-          : redirectUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
       orderDescription: freezed == orderDescription
           ? _value.orderDescription
           : orderDescription // ignore: cast_nullable_to_non_nullable
               as String?,
+      orderItems: freezed == orderItems
+          ? _value.orderItems
+          : orderItems // ignore: cast_nullable_to_non_nullable
+              as List<OrderItem>?,
+      metadata: freezed == metadata
+          ? _value.metadata
+          : metadata // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
+      storeInfo: freezed == storeInfo
+          ? _value.storeInfo
+          : storeInfo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      storeId: freezed == storeId
+          ? _value.storeId
+          : storeId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      productType: freezed == productType
+          ? _value.productType
+          : productType // ignore: cast_nullable_to_non_nullable
+              as String?,
+      terminalId: freezed == terminalId
+          ? _value.terminalId
+          : terminalId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      requestedAt: freezed == requestedAt
+          ? _value.requestedAt
+          : requestedAt // ignore: cast_nullable_to_non_nullable
+              as int?,
       isAuthorization: freezed == isAuthorization
           ? _value.isAuthorization
           : isAuthorization // ignore: cast_nullable_to_non_nullable
               as bool?,
+      authorizationExpiry: freezed == authorizationExpiry
+          ? _value.authorizationExpiry
+          : authorizationExpiry // ignore: cast_nullable_to_non_nullable
+              as int?,
+      redirectUrl: freezed == redirectUrl
+          ? _value.redirectUrl
+          : redirectUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      redirectType: freezed == redirectType
+          ? _value.redirectType
+          : redirectType // ignore: cast_nullable_to_non_nullable
+              as String?,
       userAgent: freezed == userAgent
           ? _value.userAgent
           : userAgent // ignore: cast_nullable_to_non_nullable
@@ -173,12 +245,18 @@ abstract class _$$_CreateQrCodePayloadCopyWith<$Res>
       {String merchantPaymentId,
       Amount amount,
       String codeType,
-      int? requestedAt,
-      List<OrderItem>? orderItems,
-      String? redirectType,
-      String? redirectUrl,
       String? orderDescription,
+      List<OrderItem>? orderItems,
+      Map<String, dynamic>? metadata,
+      String? storeInfo,
+      String? storeId,
+      String? productType,
+      String? terminalId,
+      int? requestedAt,
       bool? isAuthorization,
+      int? authorizationExpiry,
+      String? redirectUrl,
+      String? redirectType,
       String? userAgent});
 
   @override
@@ -199,12 +277,18 @@ class __$$_CreateQrCodePayloadCopyWithImpl<$Res>
     Object? merchantPaymentId = null,
     Object? amount = null,
     Object? codeType = null,
-    Object? requestedAt = freezed,
-    Object? orderItems = freezed,
-    Object? redirectType = freezed,
-    Object? redirectUrl = freezed,
     Object? orderDescription = freezed,
+    Object? orderItems = freezed,
+    Object? metadata = freezed,
+    Object? storeInfo = freezed,
+    Object? storeId = freezed,
+    Object? productType = freezed,
+    Object? terminalId = freezed,
+    Object? requestedAt = freezed,
     Object? isAuthorization = freezed,
+    Object? authorizationExpiry = freezed,
+    Object? redirectUrl = freezed,
+    Object? redirectType = freezed,
     Object? userAgent = freezed,
   }) {
     return _then(_$_CreateQrCodePayload(
@@ -220,30 +304,54 @@ class __$$_CreateQrCodePayloadCopyWithImpl<$Res>
           ? _value.codeType
           : codeType // ignore: cast_nullable_to_non_nullable
               as String,
-      requestedAt: freezed == requestedAt
-          ? _value.requestedAt
-          : requestedAt // ignore: cast_nullable_to_non_nullable
-              as int?,
-      orderItems: freezed == orderItems
-          ? _value._orderItems
-          : orderItems // ignore: cast_nullable_to_non_nullable
-              as List<OrderItem>?,
-      redirectType: freezed == redirectType
-          ? _value.redirectType
-          : redirectType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      redirectUrl: freezed == redirectUrl
-          ? _value.redirectUrl
-          : redirectUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
       orderDescription: freezed == orderDescription
           ? _value.orderDescription
           : orderDescription // ignore: cast_nullable_to_non_nullable
               as String?,
+      orderItems: freezed == orderItems
+          ? _value._orderItems
+          : orderItems // ignore: cast_nullable_to_non_nullable
+              as List<OrderItem>?,
+      metadata: freezed == metadata
+          ? _value._metadata
+          : metadata // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
+      storeInfo: freezed == storeInfo
+          ? _value.storeInfo
+          : storeInfo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      storeId: freezed == storeId
+          ? _value.storeId
+          : storeId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      productType: freezed == productType
+          ? _value.productType
+          : productType // ignore: cast_nullable_to_non_nullable
+              as String?,
+      terminalId: freezed == terminalId
+          ? _value.terminalId
+          : terminalId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      requestedAt: freezed == requestedAt
+          ? _value.requestedAt
+          : requestedAt // ignore: cast_nullable_to_non_nullable
+              as int?,
       isAuthorization: freezed == isAuthorization
           ? _value.isAuthorization
           : isAuthorization // ignore: cast_nullable_to_non_nullable
               as bool?,
+      authorizationExpiry: freezed == authorizationExpiry
+          ? _value.authorizationExpiry
+          : authorizationExpiry // ignore: cast_nullable_to_non_nullable
+              as int?,
+      redirectUrl: freezed == redirectUrl
+          ? _value.redirectUrl
+          : redirectUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      redirectType: freezed == redirectType
+          ? _value.redirectType
+          : redirectType // ignore: cast_nullable_to_non_nullable
+              as String?,
       userAgent: freezed == userAgent
           ? _value.userAgent
           : userAgent // ignore: cast_nullable_to_non_nullable
@@ -259,14 +367,21 @@ class _$_CreateQrCodePayload implements _CreateQrCodePayload {
       {required this.merchantPaymentId,
       required this.amount,
       this.codeType = 'ORDER_QR',
-      this.requestedAt,
-      final List<OrderItem>? orderItems,
-      this.redirectType,
-      this.redirectUrl,
       this.orderDescription,
+      final List<OrderItem>? orderItems,
+      final Map<String, dynamic>? metadata,
+      this.storeInfo,
+      this.storeId,
+      this.productType,
+      this.terminalId,
+      this.requestedAt,
       this.isAuthorization,
+      this.authorizationExpiry,
+      this.redirectUrl,
+      this.redirectType,
       this.userAgent})
-      : _orderItems = orderItems;
+      : _orderItems = orderItems,
+        _metadata = metadata;
 
   factory _$_CreateQrCodePayload.fromJson(Map<String, dynamic> json) =>
       _$$_CreateQrCodePayloadFromJson(json);
@@ -288,9 +403,12 @@ class _$_CreateQrCodePayload implements _CreateQrCodePayload {
   @JsonKey()
   final String codeType;
 
-  /// Request timestamp(Unix epoch but not Unix millisecond epoch)
+  /// Description of the Order,
+  /// to see the link to check how it will show up
+  /// https://www.paypay.ne.jp/opa/doc/jp/v1.0/files/OPA%20PayPay%E3%82%A2%E3%83%97%E3%83%AA%E3%81%A7%E3%81%AE%E8%A1%A8%E7%A4%BA.pdf#page=4
+  /// string <= 255 characters
   @override
-  final int? requestedAt;
+  final String? orderDescription;
 
   /// The user agent of the web browser from where transaction is originating
   final List<OrderItem>? _orderItems;
@@ -305,24 +423,72 @@ class _$_CreateQrCodePayload implements _CreateQrCodePayload {
     return EqualUnmodifiableListView(value);
   }
 
-  /// This can either be 'WEB_LINK' if the payment is happening on web browser or 'APP_DEEP_LINK' if the payment is happening on your app
-  @override
-  final String? redirectType;
+  /// Extra information the merchant wants to add
+  final Map<String, dynamic>? _metadata;
 
-  /// The url of the page/app to open after the payment is complete, this can be a Web URL or a Deep link to your app
+  /// Extra information the merchant wants to add
   @override
-  final String? redirectUrl;
+  Map<String, dynamic>? get metadata {
+    final value = _metadata;
+    if (value == null) return null;
+    if (_metadata is EqualUnmodifiableMapView) return _metadata;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
 
-  /// Description of the Order,
-  /// to see the link to check how it will show up
-  /// https://www.paypay.ne.jp/opa/doc/jp/v1.0/files/OPA%20PayPay%E3%82%A2%E3%83%97%E3%83%AA%E3%81%A7%E3%81%AE%E8%A1%A8%E7%A4%BA.pdf#page=4
+  /// Store info for the merchant
   /// string <= 255 characters
   @override
-  final String? orderDescription;
+  final String? storeInfo;
+
+  /// Id to identify store under merchant
+  /// string <= 255 characters
+  @override
+  final String? storeId;
+
+  /// The product type in PayPay system. Generally, this request parameter is optional.
+  ///
+  /// For some merchants that are restricted to use only certain product types, the product type must be properly set.
+  /// Example: VIRTUAL_BONUS_INVESTMENT, PAY_LATER_REPAYMENT, REAL_INVESTMENT
+  /// string (ProductType) <= 255 characters
+  @override
+  final String? productType;
+
+  /// Id to identify terminal device under store
+  /// string <= 255 characters
+  @override
+  final String? terminalId;
+
+  /// Request timestamp(Unix epoch but not Unix millisecond epoch)
+  @override
+  final int? requestedAt;
 
   /// By default it will be false, please set true if the amount will be captured later (preauth and capture payment)
   @override
   final bool? isAuthorization;
+
+  /// Epoch timestamp in seconds. The expiry duration must be less than the expiry granted to the merchant.
+  ///
+  /// Note: The expiry, in case of authorization with PAY_LATER_CC,
+  /// is subject to be shortened under special circumstances
+  /// such as user has cancelled PayLater, etc.
+  /// In such cases, PayPay will notify merchant in advance
+  /// of an updated (shortened) the expiry before merchant's authorization period
+  /// expires via webhook notification
+  /// (see the section Transaction Events > AUTHORIZED | Create a payment authorization).
+  /// It is suggested for merchant to implement proper handling
+  /// after consuming such an event to avoid capture failure.
+  @override
+  final int? authorizationExpiry;
+
+  /// The url of the page/app to open after the payment is complete,
+  /// this can be a Web URL or a Deep link to your app
+  @override
+  final String? redirectUrl;
+
+  /// This can either be 'WEB_LINK' if the payment is happening on web browser or 'APP_DEEP_LINK' if the payment is happening on your app
+  @override
+  final String? redirectType;
 
   /// The user agent of the web browser from where transaction is originating
   @override
@@ -330,7 +496,7 @@ class _$_CreateQrCodePayload implements _CreateQrCodePayload {
 
   @override
   String toString() {
-    return 'CreateQrCodePayload(merchantPaymentId: $merchantPaymentId, amount: $amount, codeType: $codeType, requestedAt: $requestedAt, orderItems: $orderItems, redirectType: $redirectType, redirectUrl: $redirectUrl, orderDescription: $orderDescription, isAuthorization: $isAuthorization, userAgent: $userAgent)';
+    return 'CreateQrCodePayload(merchantPaymentId: $merchantPaymentId, amount: $amount, codeType: $codeType, orderDescription: $orderDescription, orderItems: $orderItems, metadata: $metadata, storeInfo: $storeInfo, storeId: $storeId, productType: $productType, terminalId: $terminalId, requestedAt: $requestedAt, isAuthorization: $isAuthorization, authorizationExpiry: $authorizationExpiry, redirectUrl: $redirectUrl, redirectType: $redirectType, userAgent: $userAgent)';
   }
 
   @override
@@ -343,18 +509,28 @@ class _$_CreateQrCodePayload implements _CreateQrCodePayload {
             (identical(other.amount, amount) || other.amount == amount) &&
             (identical(other.codeType, codeType) ||
                 other.codeType == codeType) &&
-            (identical(other.requestedAt, requestedAt) ||
-                other.requestedAt == requestedAt) &&
-            const DeepCollectionEquality()
-                .equals(other._orderItems, _orderItems) &&
-            (identical(other.redirectType, redirectType) ||
-                other.redirectType == redirectType) &&
-            (identical(other.redirectUrl, redirectUrl) ||
-                other.redirectUrl == redirectUrl) &&
             (identical(other.orderDescription, orderDescription) ||
                 other.orderDescription == orderDescription) &&
+            const DeepCollectionEquality()
+                .equals(other._orderItems, _orderItems) &&
+            const DeepCollectionEquality().equals(other._metadata, _metadata) &&
+            (identical(other.storeInfo, storeInfo) ||
+                other.storeInfo == storeInfo) &&
+            (identical(other.storeId, storeId) || other.storeId == storeId) &&
+            (identical(other.productType, productType) ||
+                other.productType == productType) &&
+            (identical(other.terminalId, terminalId) ||
+                other.terminalId == terminalId) &&
+            (identical(other.requestedAt, requestedAt) ||
+                other.requestedAt == requestedAt) &&
             (identical(other.isAuthorization, isAuthorization) ||
                 other.isAuthorization == isAuthorization) &&
+            (identical(other.authorizationExpiry, authorizationExpiry) ||
+                other.authorizationExpiry == authorizationExpiry) &&
+            (identical(other.redirectUrl, redirectUrl) ||
+                other.redirectUrl == redirectUrl) &&
+            (identical(other.redirectType, redirectType) ||
+                other.redirectType == redirectType) &&
             (identical(other.userAgent, userAgent) ||
                 other.userAgent == userAgent));
   }
@@ -366,12 +542,18 @@ class _$_CreateQrCodePayload implements _CreateQrCodePayload {
       merchantPaymentId,
       amount,
       codeType,
-      requestedAt,
-      const DeepCollectionEquality().hash(_orderItems),
-      redirectType,
-      redirectUrl,
       orderDescription,
+      const DeepCollectionEquality().hash(_orderItems),
+      const DeepCollectionEquality().hash(_metadata),
+      storeInfo,
+      storeId,
+      productType,
+      terminalId,
+      requestedAt,
       isAuthorization,
+      authorizationExpiry,
+      redirectUrl,
+      redirectType,
       userAgent);
 
   @JsonKey(ignore: true)
@@ -394,12 +576,18 @@ abstract class _CreateQrCodePayload implements CreateQrCodePayload {
       {required final String merchantPaymentId,
       required final Amount amount,
       final String codeType,
-      final int? requestedAt,
-      final List<OrderItem>? orderItems,
-      final String? redirectType,
-      final String? redirectUrl,
       final String? orderDescription,
+      final List<OrderItem>? orderItems,
+      final Map<String, dynamic>? metadata,
+      final String? storeInfo,
+      final String? storeId,
+      final String? productType,
+      final String? terminalId,
+      final int? requestedAt,
       final bool? isAuthorization,
+      final int? authorizationExpiry,
+      final String? redirectUrl,
+      final String? redirectType,
       final String? userAgent}) = _$_CreateQrCodePayload;
 
   factory _CreateQrCodePayload.fromJson(Map<String, dynamic> json) =
@@ -423,22 +611,6 @@ abstract class _CreateQrCodePayload implements CreateQrCodePayload {
   String get codeType;
   @override
 
-  /// Request timestamp(Unix epoch but not Unix millisecond epoch)
-  int? get requestedAt;
-  @override
-
-  /// The user agent of the web browser from where transaction is originating
-  List<OrderItem>? get orderItems;
-  @override
-
-  /// This can either be 'WEB_LINK' if the payment is happening on web browser or 'APP_DEEP_LINK' if the payment is happening on your app
-  String? get redirectType;
-  @override
-
-  /// The url of the page/app to open after the payment is complete, this can be a Web URL or a Deep link to your app
-  String? get redirectUrl;
-  @override
-
   /// Description of the Order,
   /// to see the link to check how it will show up
   /// https://www.paypay.ne.jp/opa/doc/jp/v1.0/files/OPA%20PayPay%E3%82%A2%E3%83%97%E3%83%AA%E3%81%A7%E3%81%AE%E8%A1%A8%E7%A4%BA.pdf#page=4
@@ -446,8 +618,66 @@ abstract class _CreateQrCodePayload implements CreateQrCodePayload {
   String? get orderDescription;
   @override
 
+  /// The user agent of the web browser from where transaction is originating
+  List<OrderItem>? get orderItems;
+  @override
+
+  /// Extra information the merchant wants to add
+  Map<String, dynamic>? get metadata;
+  @override
+
+  /// Store info for the merchant
+  /// string <= 255 characters
+  String? get storeInfo;
+  @override
+
+  /// Id to identify store under merchant
+  /// string <= 255 characters
+  String? get storeId;
+  @override
+
+  /// The product type in PayPay system. Generally, this request parameter is optional.
+  ///
+  /// For some merchants that are restricted to use only certain product types, the product type must be properly set.
+  /// Example: VIRTUAL_BONUS_INVESTMENT, PAY_LATER_REPAYMENT, REAL_INVESTMENT
+  /// string (ProductType) <= 255 characters
+  String? get productType;
+  @override
+
+  /// Id to identify terminal device under store
+  /// string <= 255 characters
+  String? get terminalId;
+  @override
+
+  /// Request timestamp(Unix epoch but not Unix millisecond epoch)
+  int? get requestedAt;
+  @override
+
   /// By default it will be false, please set true if the amount will be captured later (preauth and capture payment)
   bool? get isAuthorization;
+  @override
+
+  /// Epoch timestamp in seconds. The expiry duration must be less than the expiry granted to the merchant.
+  ///
+  /// Note: The expiry, in case of authorization with PAY_LATER_CC,
+  /// is subject to be shortened under special circumstances
+  /// such as user has cancelled PayLater, etc.
+  /// In such cases, PayPay will notify merchant in advance
+  /// of an updated (shortened) the expiry before merchant's authorization period
+  /// expires via webhook notification
+  /// (see the section Transaction Events > AUTHORIZED | Create a payment authorization).
+  /// It is suggested for merchant to implement proper handling
+  /// after consuming such an event to avoid capture failure.
+  int? get authorizationExpiry;
+  @override
+
+  /// The url of the page/app to open after the payment is complete,
+  /// this can be a Web URL or a Deep link to your app
+  String? get redirectUrl;
+  @override
+
+  /// This can either be 'WEB_LINK' if the payment is happening on web browser or 'APP_DEEP_LINK' if the payment is happening on your app
+  String? get redirectType;
   @override
 
   /// The user agent of the web browser from where transaction is originating
