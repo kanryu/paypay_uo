@@ -74,7 +74,6 @@ Copyright 2023 KATO Kanryu(k.kanryu@gmail.com)
 Please raise issues on GitHub. Pull requests always welcome.
 
 [![License](https://img.shields.io/:license-apache-orange.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Build Status](https://travis-ci.org/kanryu/paypay_uo.svg?branch=master)](https://travis-ci.org/kanryu/paypay_uo)
 [![Coverage Status](https://coveralls.io/repos/github/kanryu/paypay_uo/badge.svg)](https://coveralls.io/github/kanryu/paypay_uo)
 [![Maintainability](https://api.codeclimate.com/v1/badges/7f020ad8816dc9f64f6f/maintainability)](https://codeclimate.com/github/kanryu/paypay_uo/maintainability)
 [![Black Duck Security Risk](https://copilot.blackducksoftware.com/github/repos/kanryu/paypay_uo/branches/master/badge-risk.svg)](https://copilot.blackducksoftware.com/github/repos/kanryu/paypay_uo/branches/master)
