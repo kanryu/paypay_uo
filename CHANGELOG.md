@@ -1,3 +1,6 @@
+## 0.1.2
+-   fixed bug to access codeApi.getPaymentDetails()
+
 ## 0.1.1
 
 -   add field to post json
