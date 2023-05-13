@@ -21,7 +21,7 @@ class Controller {
   /// [additionalHeaders] is http headers you want to add
   Future<Response> doCall(ApiInfo apiInfo, Uri uri,
       {String? requestBody, Map<String, String>? additionalHeaders}) async {
-    var headers = hmacCallOpts(apiInfo.method, apiInfo.path,
+    var headers = hmacCallOpts(apiInfo.method, uri.path,
         contentType: requestBody != null ? contentType : 'empty',
         requestBody: requestBody);
     if (additionalHeaders != null) {

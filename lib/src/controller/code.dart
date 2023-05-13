@@ -25,8 +25,10 @@ class Code extends Controller {
   /// [merchantPaymentId] is the unique payment transaction id provided by merchant
   Future<http.Response> getPaymentDetails(String merchantPaymentId) {
     final apiInfo = ApiInfo.getQRPaymentDetails();
-    final uri =
-        main.uri.apiUri.replace(path: '${apiInfo.path}/$merchantPaymentId');
+    final entrypoint = apiInfo.path.format({
+      'merchantPaymentId': merchantPaymentId,
+    });
+    final uri = main.uri.apiUri.replace(path: entrypoint);
     return doCall(apiInfo, uri);
   }
 

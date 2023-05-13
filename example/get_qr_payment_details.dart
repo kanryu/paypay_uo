@@ -5,26 +5,12 @@ void main() async {
   final apiKey = 'YOUR API KEY';
   final apiSecret = 'YOUR API SECRET';
   final assumeMerchant = 'YOUR ASSUME MERCHANT';
+  final merchantPaymentId = 'TESTMERCH_PAY_123';
   final auth = PayPayAuth(
       merchantId: assumeMerchant, apiSecret: apiSecret, apiKey: apiKey);
   final client = PayPayClient(apiMode: ApiMode.staging, auth: auth);
-  final payload = CreateQrCodePayload(
-    merchantPaymentId: PayPayClient.getTestMerchantPaymentId(),
-    amount: Amount(amount: 1, currency: 'JPY'),
-    codeType: 'ORDER_QR',
-    requestedAt: PayPayClient.getRequestdAt(),
-    orderItems: [
-      OrderItem(
-          name: "Cake",
-          quantity: 1,
-          unitPrice: Amount(amount: 20, currency: 'JPY'))
-    ],
-    redirectType: "WEB_LINK",
-    redirectUrl: "http://foobar.com",
-  );
 
-  print(payload.merchantPaymentId);
-  final response = await client.codeApi.createQRCode(payload);
+  final response = await client.codeApi.getPaymentDetails(merchantPaymentId);
   print(response.statusCode);
   print(response.body);
   ApiResult result = PayPayClient.convertResponseToApiResult(response);
