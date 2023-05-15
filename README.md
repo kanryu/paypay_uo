@@ -64,6 +64,14 @@ void main() async {
 }
 ```
 
+## Logger
+
+It supports log output by Logger.
+
+By default, execution of PayPay API and its result are output.
+
+Specifying Level.debug or Level.verbose will output more detailed information.
+
 # License
 Apache License Version 2.0
 

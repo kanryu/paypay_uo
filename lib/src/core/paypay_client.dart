@@ -26,7 +26,7 @@ class PayPayClient {
       Client? client})
       : uri = ApiUri.getUri(apiMode),
         http = client ?? Client(),
-        logger = logger ?? new Logger();
+        logger = logger ?? Logger(level: Level.info);
 
   final Client http;
   final PayPayAuth auth;

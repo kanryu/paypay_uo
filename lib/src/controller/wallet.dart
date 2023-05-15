@@ -30,7 +30,8 @@ class Wallet extends Controller {
     final apiInfo = ApiInfo.checkWalletBalance();
     final uri =
         main.uri.apiUri.replace(path: apiInfo.path, queryParameters: data);
-
+    main.logger.i(
+        'PayPay API.checkWalletBalance(userAuthorizationId=$userAuthorizationId, amount=$amount, currency=$currency, productType=$productType)');
     return doCall(apiInfo, uri);
   }
 }

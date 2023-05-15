@@ -17,6 +17,9 @@ class Code extends Controller {
     final data = payload.toJson();
     final requestBody = requestDataToJson(data);
 
+    main.logger.i(
+        'PayPay API.createDynamicQRCode(merchantPaymentId=${payload.merchantPaymentId})');
+    main.logger.d('request body: $requestBody');
     return doCall(apiInfo, uri, requestBody: requestBody);
   }
 
@@ -29,6 +32,8 @@ class Code extends Controller {
       'merchantPaymentId': merchantPaymentId,
     });
     final uri = main.uri.apiUri.replace(path: entrypoint);
+    main.logger.i(
+        'PayPay API.getQRPaymentDetails(merchantPaymentId=$merchantPaymentId)');
     return doCall(apiInfo, uri);
   }
 
@@ -39,6 +44,7 @@ class Code extends Controller {
       'codeId': codeId,
     });
     final uri = main.uri.apiUri.replace(path: entrypoint);
+    main.logger.i('PayPay API.deleteDynamicQRCode(codeId=$codeId)');
     return doCall(apiInfo, uri);
   }
 }

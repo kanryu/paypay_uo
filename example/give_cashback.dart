@@ -17,8 +17,6 @@ void main() async {
   );
 
   final response = await client.cashBackApi.giveCashback(payload);
-  print(response.statusCode);
-  print(response.body);
   ApiResult result = PayPayClient.convertResponseToApiResult(response);
-  print(result.resultInfo.code);
+  print('code=${result.resultInfo.code}');
 }

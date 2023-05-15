@@ -28,6 +28,9 @@ class Payment extends Controller {
     final data = payload.toJson();
     final requestBody = requestDataToJson(data);
 
+    main.logger.i(
+        'PayPay API.createPayment(merchantPaymentId=${payload.merchantPaymentId}, agreeSimilarTransaction=$agreeSimilarTransaction)');
+    main.logger.d('request body: $requestBody');
     return doCall(apiInfo, uri, requestBody: requestBody);
   }
 
@@ -39,6 +42,9 @@ class Payment extends Controller {
     final data = payload.toJson();
     final requestBody = requestDataToJson(data);
 
+    main.logger.i(
+        'PayPay API.createSubscriptionPayment(merchantPaymentId=${payload.merchantPaymentId})');
+    main.logger.d('request body: $requestBody');
     return doCall(apiInfo, uri, requestBody: requestBody);
   }
 
@@ -50,6 +56,9 @@ class Payment extends Controller {
     final data = payload.toJson();
     final requestBody = requestDataToJson(data);
 
+    main.logger.i(
+        'PayPay API.createRequestOrder(merchantPaymentId=${payload.merchantPaymentId})');
+    main.logger.d('request body: $requestBody');
     return doCall(apiInfo, uri, requestBody: requestBody);
   }
 
@@ -66,6 +75,8 @@ class Payment extends Controller {
     final entrypoint = apiInfo.path.format({
       'merchantPaymentId': merchantPaymentId,
     });
+    main.logger.i(
+        'PayPay API.${apiInfo.apiName}(merchantPaymentId=$merchantPaymentId, paymentType=$paymentType)');
     final uri = main.uri.apiUri.replace(path: entrypoint);
     return doCall(apiInfo, uri);
   }
@@ -88,6 +99,8 @@ class Payment extends Controller {
       'merchantPaymentId': merchantPaymentId,
     });
     final uri = main.uri.apiUri.replace(path: entrypoint);
+    main.logger.i(
+        'PayPay API.${apiInfo.apiName}(merchantPaymentId=$merchantPaymentId)');
     return doCall(apiInfo, uri);
   }
 
@@ -98,6 +111,9 @@ class Payment extends Controller {
     final data = payload.toJson();
     final requestBody = requestDataToJson(data);
 
+    main.logger.i(
+        'PayPay API.createRefundPayment(merchantRefundId=${payload.merchantRefundId})');
+    main.logger.d('request body: $requestBody');
     return doCall(apiInfo, uri, requestBody: requestBody);
   }
 
@@ -111,6 +127,8 @@ class Payment extends Controller {
       'merchantRefundId': merchantRefundId,
     });
     final uri = main.uri.apiUri.replace(path: entrypoint);
+    main.logger
+        .i('PayPay API.getRefundDetails(merchantRefundId=$merchantRefundId)');
     return doCall(apiInfo, uri);
   }
 
@@ -127,7 +145,9 @@ class Payment extends Controller {
         : main.uri.apiUri.replace(path: apiInfo.path);
     final data = payload.toJson();
     final requestBody = requestDataToJson(data);
-
+    main.logger.i(
+        'PayPay API.createOrderAndAuthorize(merchantPaymentId=${payload.merchantPaymentId})');
+    main.logger.d('request body: $requestBody');
     return doCall(apiInfo, uri, requestBody: requestBody);
   }
 
@@ -139,7 +159,9 @@ class Payment extends Controller {
     final uri = main.uri.apiUri.replace(path: apiInfo.path);
     final data = payload.toJson();
     final requestBody = requestDataToJson(data);
-
+    main.logger.i(
+        'PayPay API.captureAuthorizedOrder(merchantPaymentId=${payload.merchantPaymentId})');
+    main.logger.d('request body: $requestBody');
     return doCall(apiInfo, uri, requestBody: requestBody);
   }
 
@@ -153,7 +175,9 @@ class Payment extends Controller {
     final uri = main.uri.apiUri.replace(path: apiInfo.path);
     final data = payload.toJson();
     final requestBody = requestDataToJson(data);
-
+    main.logger.i(
+        'PayPay API.revertAuthorizedOrder(merchantRevertId=${payload.merchantRevertId})');
+    main.logger.d('request body: $requestBody');
     return doCall(apiInfo, uri, requestBody: requestBody);
   }
 }

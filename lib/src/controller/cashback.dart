@@ -17,6 +17,9 @@ class Cashback extends Controller {
     final uri = main.uri.apiUri.replace(path: apiInfo.path);
     final data = payload.toJson();
     final requestBody = requestDataToJson(data);
+    main.logger.i(
+        'PayPay API.createCashBackRequest(merchantCashbackId=${payload.merchantCashbackId})');
+    main.logger.d('request body: $requestBody');
     return doCall(apiInfo, uri, requestBody: requestBody);
   }
 
@@ -28,6 +31,8 @@ class Cashback extends Controller {
     final entrypoint =
         apiInfo.path.format({'merchantCashbackId': merchantCashbackId});
     final uri = main.uri.apiUri.replace(path: entrypoint);
+    main.logger.i(
+        'PayPay API.getCashbackDetails(merchantCashbackId=$merchantCashbackId)');
     return doCall(apiInfo, uri);
   }
 
@@ -37,6 +42,9 @@ class Cashback extends Controller {
     final uri = main.uri.apiUri.replace(path: apiInfo.path);
     final data = payload.toJson();
     final requestBody = requestDataToJson(data);
+    main.logger.i(
+        'PayPay API.createReverseCashBackRequest(merchantCashbackId=${payload.merchantCashbackId})');
+    main.logger.d('request body: $requestBody');
     return doCall(apiInfo, uri, requestBody: requestBody);
   }
 
@@ -51,6 +59,8 @@ class Cashback extends Controller {
       'merchantCashbackId': merchantCashbackId,
     });
     final uri = main.uri.apiUri.replace(path: entrypoint);
+    main.logger.i(
+        'PayPay API.getReversedCashBackDetails(merchantCashbackReversalId=$merchantCashbackReversalId, merchantCashbackId=$merchantCashbackId)');
     return doCall(apiInfo, uri);
   }
 }

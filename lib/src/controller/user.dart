@@ -17,6 +17,8 @@ class User extends Controller {
       'userAuthorizationId': userAuthorizationId,
     });
     final uri = main.uri.apiUri.replace(path: entrypoint);
+    main.logger
+        .i('PayPay API.unlinkUser(userAuthorizationId=$userAuthorizationId)');
     return doCall(apiInfo, uri);
   }
 
@@ -26,7 +28,9 @@ class User extends Controller {
     final uri = main.uri.apiUri.replace(path: apiInfo.path);
     final data = payload.toJson();
     final requestBody = requestDataToJson(data);
-
+    main.logger.i(
+        'PayPay API.createAccountLinkQrCode(referenceId=${payload.referenceId})');
+    main.logger.d('request body: $requestBody');
     return doCall(apiInfo, uri, requestBody: requestBody);
   }
 
@@ -36,6 +40,8 @@ class User extends Controller {
     final uri = main.uri.apiUri.replace(
         path: apiInfo.path,
         queryParameters: {'userAuthorizationId': userAuthorizationId});
+    main.logger.i(
+        'PayPay API.getUserAuthorizationStatus(userAuthorizationId=$userAuthorizationId)');
     return doCall(apiInfo, uri);
   }
 
@@ -45,6 +51,8 @@ class User extends Controller {
     final uri = main.uri.apiUri.replace(
         path: apiInfo.path,
         queryParameters: {'userAuthorizationId': userAuthorizationId});
+    main.logger.i(
+        'PayPay API.getSecureUserProfile(userAuthorizationId=$userAuthorizationId)');
     return doCall(apiInfo, uri);
   }
 }

@@ -23,10 +23,7 @@ void main() async {
     redirectUrl: "http://foobar.com",
   );
 
-  print(payload.merchantPaymentId);
   final response = await client.codeApi.createQRCode(payload);
-  print(response.statusCode);
-  print(response.body);
   ApiResult result = PayPayClient.convertResponseToApiResult(response);
-  print(result.resultInfo.code);
+  print('code=${result.resultInfo.code}');
 }

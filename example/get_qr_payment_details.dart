@@ -11,8 +11,6 @@ void main() async {
   final client = PayPayClient(apiMode: ApiMode.staging, auth: auth);
 
   final response = await client.codeApi.getPaymentDetails(merchantPaymentId);
-  print(response.statusCode);
-  print(response.body);
   ApiResult result = PayPayClient.convertResponseToApiResult(response);
-  print(result.resultInfo.code);
+  print('code=${result.resultInfo.code}');
 }

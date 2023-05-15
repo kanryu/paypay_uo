@@ -53,13 +53,21 @@ class Controller {
       jsonEncode(data).replaceAll("\n", "");
 
   void parseResultInfo(apiInfo, Response response) {
+    final responseBody = utf8.decode(response.bodyBytes);
     if (response.statusCode >= 500) {
+      main.logger
+          .e('PayPay API Server Error: statusCode=${response.statusCode}');
+      main.logger.d('response body: $responseBody');
       throw ApiException(statusCode: response.statusCode);
     }
     if (response.statusCode >= 400) {
+      main.logger.e('PayPay API Failed: statusCode=${response.statusCode}');
+      main.logger.d('response body: $responseBody');
       final apiResult = PayPayClient.convertResponseToApiResult(response);
       throw ApiException(statusCode: response.statusCode, apiResult: apiResult);
     }
+    main.logger.i('PayPay API Successed: statusCode=${response.statusCode}');
+    main.logger.d('response body: $responseBody');
   }
 
   /// Get Hmac headers
@@ -68,11 +76,11 @@ class Controller {
     final authStr = payPayEncryptHeader(main.auth.apiKey, main.auth.apiSecret,
         httpMethod, paypayEndpoint, contentType,
         requestBody: requestBody);
-
     final postOpts = <String, String>{
       'Content-Type': contentType,
       'Authorization': authStr
     };
+    main.logger.v('Authorization: $authStr');
     return postOpts;
   }
 
