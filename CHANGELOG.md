@@ -1,3 +1,7 @@
+## 0.1.3
+-   support for JSON of CJK languages
+-   support for logging
+
 ## 0.1.2
 -   fixed bug to access codeApi.getPaymentDetails()
 
