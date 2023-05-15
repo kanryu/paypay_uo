@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart';
 import 'package:uuid/uuid.dart';
+import 'package:logger/logger.dart';
 import 'package:paypay_uo/src/controller/code.dart';
 import 'package:paypay_uo/src/controller/cashback.dart';
 import 'package:paypay_uo/src/controller/payment.dart';
@@ -16,6 +17,7 @@ class PayPayClient {
   PayPayClient(
       {required this.auth,
       required this.apiMode,
+      Logger? logger,
       this.code,
       this.cashBack,
       this.payment,
@@ -23,11 +25,16 @@ class PayPayClient {
       this.wallet,
       Client? client})
       : uri = ApiUri.getUri(apiMode),
-        http = client ?? Client();
+        http = client ?? Client(),
+        logger = logger ?? new Logger();
 
   final Client http;
   final PayPayAuth auth;
   final ApiMode apiMode;
+
+  /// A Logger commonly used in this library.
+  /// You can customize by resetting logger.printer or logger.output.
+  final Logger logger;
 
   /// url set of the APIs
   final ApiUri uri;
@@ -78,5 +85,5 @@ class PayPayClient {
   }
 
   static ApiResult convertResponseToApiResult(Response response) =>
-      ApiResult.fromJson(json.decode(response.body));
+      ApiResult.fromJson(json.decode(utf8.decode(response.bodyBytes)));
 }
