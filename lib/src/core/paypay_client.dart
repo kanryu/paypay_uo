@@ -1,15 +1,16 @@
 import 'dart:convert';
+
 import 'package:http/http.dart';
-import 'package:uuid/uuid.dart';
 import 'package:logger/logger.dart';
-import 'package:paypay_uo/src/controller/code.dart';
+import 'package:paypay_uo/src/constants/api_uri.dart';
 import 'package:paypay_uo/src/controller/cashback.dart';
+import 'package:paypay_uo/src/controller/code.dart';
 import 'package:paypay_uo/src/controller/payment.dart';
 import 'package:paypay_uo/src/controller/user.dart';
 import 'package:paypay_uo/src/controller/wallet.dart';
-import 'package:paypay_uo/src/constants/api_uri.dart';
-import 'package:paypay_uo/src/core/model/auth.dart';
 import 'package:paypay_uo/src/core/model/api_result.dart';
+import 'package:paypay_uo/src/core/model/auth.dart';
+import 'package:uuid/uuid.dart';
 
 enum ApiMode { perfMode, staging, test, production }
 
@@ -78,7 +79,7 @@ class PayPayClient {
     return 'TESTMERCH_PAY_$testmerchPayIdRand';
   }
 
-  static int getRequestdAt() {
+  static int getRequestedAt() {
     final requestTimeStamp = DateTime.now().millisecondsSinceEpoch.toString();
     return int.parse(
         requestTimeStamp.substring(0, requestTimeStamp.length - 3));

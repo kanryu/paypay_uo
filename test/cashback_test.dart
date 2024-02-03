@@ -1,8 +1,9 @@
 import 'dart:io';
 
-import 'package:test/test.dart';
 import 'package:http/http.dart';
 import 'package:paypay_uo/paypay_uo.dart';
+import 'package:test/test.dart';
+
 import 'helper/moch_http_client.dart';
 import 'helper/util.dart';
 
@@ -27,7 +28,7 @@ void main() {
   test('Test give cashback', () async {
     final payload = CashBackPayload(
       merchantCashbackId: merchantCashbackId,
-      requestedAt: PayPayClient.getRequestdAt(),
+      requestedAt: PayPayClient.getRequestedAt(),
       userAuthorizationId: userAuthorizationId,
       amount: Amount(amount: 1, currency: 'JPY'),
     );
@@ -83,7 +84,7 @@ void main() {
     final payload = ReverseCashBackPayload(
       merchantCashbackReversalId: 'TESTXXXXXXXXX456',
       merchantCashbackId: 'testXXXXXXXXXXXXXXX123',
-      requestedAt: PayPayClient.getRequestdAt(),
+      requestedAt: PayPayClient.getRequestedAt(),
       reason: "reason",
       amount: Amount(amount: 1, currency: 'JPY'),
     );

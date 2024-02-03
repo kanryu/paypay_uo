@@ -1,8 +1,9 @@
 import 'dart:io';
 
-import 'package:test/test.dart';
 import 'package:http/http.dart';
 import 'package:paypay_uo/paypay_uo.dart';
+import 'package:test/test.dart';
+
 import 'helper/moch_http_client.dart';
 import 'helper/util.dart';
 
@@ -32,7 +33,7 @@ void main() {
         "continuous_payments",
         "pending_payments"
       ],
-      requestedAt: PayPayClient.getRequestdAt(),
+      requestedAt: PayPayClient.getRequestedAt(),
       redirectUrl: 'https://merchant.domain/test/callback',
       referenceId: referenceId,
     );
@@ -58,7 +59,7 @@ void main() {
           "pending_payments",
           'non_exist_scope' // Exception
         ],
-        requestedAt: PayPayClient.getRequestdAt(),
+        requestedAt: PayPayClient.getRequestedAt(),
         redirectUrl: 'https://merchant.domain/test/callback',
         referenceId: referenceId,
       );

@@ -1,8 +1,9 @@
 import 'dart:io';
 
-import 'package:test/test.dart';
 import 'package:http/http.dart';
 import 'package:paypay_uo/paypay_uo.dart';
+import 'package:test/test.dart';
+
 import 'helper/moch_http_client.dart';
 import 'helper/util.dart';
 
@@ -29,7 +30,7 @@ void main() {
   test('Test Create pending payment', () async {
     final payload = CreatePendingPaymentPayload(
       merchantPaymentId: merchantPaymentId,
-      requestedAt: PayPayClient.getRequestdAt(),
+      requestedAt: PayPayClient.getRequestedAt(),
       userAuthorizationId: userAuthorizationId,
       amount: Amount(amount: 1, currency: 'JPY'),
     );
@@ -78,7 +79,7 @@ void main() {
     final payload = RefundPaymentPayload(
       merchantRefundId: merchantRefundId,
       paymentId: paymentId,
-      requestedAt: PayPayClient.getRequestdAt(),
+      requestedAt: PayPayClient.getRequestedAt(),
       amount: Amount(amount: 1, currency: 'JPY'),
     );
 
