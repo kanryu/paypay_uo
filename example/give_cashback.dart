@@ -11,7 +11,7 @@ void main() async {
   final client = PayPayClient(apiMode: ApiMode.staging, auth: auth);
   final payload = CashBackPayload(
     merchantCashbackId: merchantCashbackId,
-    requestedAt: PayPayClient.getRequestdAt(),
+    requestedAt: PayPayClient.getRequestedAt(),
     userAuthorizationId: userAuthorizationId,
     amount: Amount(amount: 1, currency: 'JPY'),
   );

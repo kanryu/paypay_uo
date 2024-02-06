@@ -12,7 +12,7 @@ void main() async {
     merchantPaymentId: PayPayClient.getTestMerchantPaymentId(),
     amount: Amount(amount: 1, currency: 'JPY'),
     codeType: 'ORDER_QR',
-    requestedAt: PayPayClient.getRequestdAt(),
+    requestedAt: PayPayClient.getRequestedAt(),
     orderItems: [
       OrderItem(
           name: "Cake",
